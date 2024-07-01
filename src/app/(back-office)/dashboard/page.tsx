@@ -1,8 +1,17 @@
+import HeadingBar from '@/components/backoffice/HeadingBar'
+import LargeCards from '@/components/backoffice/LargeCards'
+import SmallCards from '@/components/backoffice/SmallCards'
 
 export default function DashBoard() {
     return (
-      <div className="flex items-center justify-center flex-col min-h-screen">
-        <h2 className="text-4xl">DashBoard</h2>
+      <div className="">
+        <HeadingBar title="Dashboard Overview"/>
+        {/* Large Charts */}
+        <LargeCards />
+        {/* Small Charts */}
+        <SmallCards />
+        {/* Bars */}
+        {/* Recent order table */}
       </div>
     );
   }

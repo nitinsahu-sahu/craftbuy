@@ -13,6 +13,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      boxShadow: {
+        'greencard': '-1px 1px 4px 3px green',
+        'bluecard': '-1px 1px 4px 3px blue',
+        'orangecard': '-1px 1px 4px 3px orange',
+        'purplecard': '-1px 1px 4px 3px purple',
+        'pinkcard': '-1px 1px 4px 3px pink',
+      }
     },
   },
   plugins: [],
