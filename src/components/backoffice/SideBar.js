@@ -6,7 +6,7 @@ const SideBar = () => {
   return (
     <div className="bg-slate-700 space-y-6 w-60 min-h-screen text-slate-50 p-3 fixed left-0 top-0">
       <Link className="mb-6" href="#">
-        <Image src="/cb-logo.png" height={80} width={200} />
+        <Image src="/cb-logo.png" height={80} width={200} alt="logo"/>
       </Link>
       <div className="space-y-3 flex flex-col">
         <Link href="/dashboard">Dashboard</Link>
