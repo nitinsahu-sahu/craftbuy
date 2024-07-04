@@ -45,10 +45,10 @@ const WeelklySalesBar = () => {
       <h2 className="text-xl font-bold">Weekly Sales</h2>
       {/* tabs button */}
       <div className="text-sm font-medium text-center text-orange-500 border-b border-orange-200 dark:text-orange-400 dark:border-orange-700">
-        <ul className="flex flex-wrap -mb-px">
+        <div className="flex flex-wrap">
           {tabs.map((tabs, index) => {
             return (
-              <li className="me-2" kay={index}>
+              <div className=" me-2" kay={index}>
                 <button
                   onClick={() => setChartToDisplay(tabs.type)}
                   className={
@@ -59,10 +59,10 @@ const WeelklySalesBar = () => {
                 >
                   {tabs.title}
                 </button>
-              </li>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
       {/* tabs content display  */}
       {tabs.map((tab, index) => {

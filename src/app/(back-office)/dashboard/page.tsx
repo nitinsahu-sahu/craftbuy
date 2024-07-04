@@ -2,7 +2,7 @@ import HeadingBar from '@/components/backoffice/HeadingBar'
 import LargeCards from '@/components/backoffice/LargeCards'
 import SmallCards from '@/components/backoffice/SmallCards'
 import DashboardCharts from '@/components/backoffice/DashboardCharts'
-import RecentOrder from '@/components/backoffice/RecentOrder'
+import CustomDataTable from '@/components/backoffice/CustomDataTable'
 
 export default function DashBoard() {
     return (
@@ -15,7 +15,7 @@ export default function DashBoard() {
         {/* Bars */}
         <DashboardCharts />
         {/* Recent order table */}
-        <RecentOrder />
+        <CustomDataTable />
       </div>
     );
   }
