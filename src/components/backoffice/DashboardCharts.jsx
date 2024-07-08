@@ -48,7 +48,7 @@ const WeelklySalesBar = () => {
         <div className="flex flex-wrap">
           {tabs.map((tabs, index) => {
             return (
-              <div className=" me-2" kay={index}>
+              <div className="me-2" key={index}>
                 <button
                   onClick={() => setChartToDisplay(tabs.type)}
                   className={
