@@ -129,6 +129,7 @@ const CustomDataTable = () => {
               <button
                 onClick={() => setCurrentPage(index + 1)}
                 disabled={currentPage === index + 1}
+                key={index}
                 className={
                   currentPage == index + 1
                     ? "flex items-center justify-center px-3 h-8 leading-tight text-white bg-slate-800 border border-gray-300 rounded-e-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
