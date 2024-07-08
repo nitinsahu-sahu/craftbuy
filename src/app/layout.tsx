@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./styles/main.css";
-
+import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,11 +18,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"  rel="stylesheet" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+          rel="stylesheet"
+        />
+        <Script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js" async></Script>
+
       </head>
       <body className={inter.className}>
         {children}
-        <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
       </body>
     </html>
   );
