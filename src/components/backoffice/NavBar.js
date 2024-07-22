@@ -1,42 +1,70 @@
 "use client";
 import { AlignJustify, Bell, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { BsMoon, BsSun } from "react-icons/bs";
 
 const NavBar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const toggleDropdown = (dropdownId) => {
     setOpenDropdown(openDropdown === dropdownId ? null : dropdownId);
   };
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) null;
   return (
-    <div className="flex items-center justify-between bg-slate-800 text-slate-50 py-8 h-14 px-12 fixed top-0 w-full">
+    <div
+      className='flex items-center justify-between py-8 h-14 px-12 fixed top-0 w-full dark:bg-slate-800 bg-slate-300'
+    >
       {/* Icon */}
       <button>
         <AlignJustify />
       </button>
       {/* 3 Icons */}
       <div className="flex space-x-6">
-        <button>
-          <Sun />
+        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+          {theme === "light" ? (
+            <BsMoon title="dark" />
+          ) : (
+            <BsSun title="light" />
+          )}
         </button>
         <button
           type="button"
           id="dropdownNotification"
           onClick={() => toggleDropdown("dropdownNotification")}
-          className="relative inline-flex items-center p-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className={`relative inline-flex items-center p-2 text-sm font-medium text-center rounded-lg focus:ring-4 focus:outline-none ${
+            theme === "dark"
+              ? "text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+              : "text-gray-900 bg-blue-700 hover:bg-blue-800 focus:ring-blue-300"
+          }`}
         >
           <Bell />
           <span className="sr-only">Notifications</span>
-          <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+          <div
+            className={`absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold border-2 rounded-full -top-2 -end-2 ${
+              theme === "dark"
+                ? "text-white bg-red-500 border-gray-900"
+                : "text-white bg-red-500 border-white"
+            }`}
+          >
             20
           </div>
         </button>
         <button
           onClick={() => toggleDropdown("dropdownUserAvatar")}
           id="dropdownUserAvatarButton"
-          className="flex text-sm rounded-full md:me-0 focus:ring-4 dark:focus:ring-gray-600"
+          className={`flex text-sm rounded-full focus:ring-4 ${
+            theme === "dark"
+              ? "dark:focus:ring-gray-600"
+              : "focus:ring-gray-300"
+          }`}
           type="button"
         >
           <span className="sr-only">Open user menu</span>
@@ -45,25 +73,35 @@ const NavBar = () => {
             height={80}
             width={200}
             alt="profile img"
-            className="bg-white w-10 h-10 rounded-full"
+            className={`w-10 h-10 rounded-full ${
+              theme === "dark" ? "bg-gray-700" : "bg-white"
+            }`}
           />
         </button>
         {openDropdown === "dropdownUserAvatar" && (
           <div
             id="dropdownInformation"
-            className="z-10 mt-16 right-6 bg-white divide-y divide-gray-100 rounded-lg shadow px-4 text-center dark:bg-gray-700 dark:divide-gray-600 absolute"
+            className={`z-10 mt-16 right-6 divide-y rounded-lg shadow px-4 text-center absolute ${
+              theme === "dark"
+                ? "bg-gray-700 divide-gray-600 text-white"
+                : "bg-white divide-gray-100 text-gray-900"
+            }`}
           >
-            <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+            <div className="px-4 py-3 text-sm">
               <div>My account</div>
             </div>
             <ul
-              className="py-2 text-sm text-gray-700 dark:text-gray-200"
+              className="py-2 text-sm"
               aria-labelledby="dropdownInformationButton"
             >
               <li>
                 <a
                   href="#"
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className={`block px-4 py-2 hover:bg-gray-100 ${
+                    theme === "dark"
+                      ? "dark:hover:bg-gray-600 dark:hover:text-white"
+                      : "hover:bg-gray-200"
+                  }`}
                 >
                   Dashboard
                 </a>
@@ -71,7 +109,11 @@ const NavBar = () => {
               <li>
                 <a
                   href="#"
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className={`block px-4 py-2 hover:bg-gray-100 ${
+                    theme === "dark"
+                      ? "dark:hover:bg-gray-600 dark:hover:text-white"
+                      : "hover:bg-gray-200"
+                  }`}
                 >
                   Settings
                 </a>
@@ -79,7 +121,11 @@ const NavBar = () => {
               <li>
                 <a
                   href="#"
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className={`block px-4 py-2 hover:bg-gray-100 ${
+                    theme === "dark"
+                      ? "dark:hover:bg-gray-600 dark:hover:text-white"
+                      : "hover:bg-gray-200"
+                  }`}
                 >
                   Profile
                 </a>
@@ -88,7 +134,11 @@ const NavBar = () => {
             <div className="py-2">
               <a
                 href="#"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                className={`block px-4 py-2 text-sm hover:bg-gray-100 ${
+                  theme === "dark"
+                    ? "dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    : "hover:bg-gray-200 text-gray-700"
+                }`}
               >
                 Sign out
               </a>
@@ -98,16 +148,34 @@ const NavBar = () => {
         {openDropdown === "dropdownNotification" && (
           <div
             id="dropdownNotification"
-            className="z-10 right-8 mt-16 w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-700 absolute"
+            className={`z-10 right-8 mt-16 w-full max-w-sm divide-y rounded-lg shadow absolute ${
+              theme === "dark"
+                ? "bg-gray-800 divide-gray-700"
+                : "bg-white divide-gray-100"
+            }`}
             aria-labelledby="dropdownNotificationButton"
           >
-            <div className="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:bg-gray-800 dark:text-white">
+            <div
+              className={`block px-4 py-2 font-medium text-center rounded-t-lg ${
+                theme === "dark"
+                  ? "bg-gray-800 text-white"
+                  : "bg-gray-50 text-gray-700"
+              }`}
+            >
               Notifications
             </div>
-            <div className="divide-y divide-gray-100 dark:divide-gray-700">
+            <div
+              className={`divide-y ${
+                theme === "dark" ? "divide-gray-700" : "divide-gray-100"
+              }`}
+            >
               <a
                 href="#"
-                className="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className={`flex px-4 py-3 ${
+                  theme === "dark"
+                    ? "dark:hover:bg-gray-700"
+                    : "hover:bg-gray-100"
+                }`}
               >
                 <div className="flex-shrink-0">
                   <Image
@@ -115,9 +183,17 @@ const NavBar = () => {
                     height={80}
                     width={200}
                     alt="profile img"
-                    className="bg-white w-10 h-10 rounded-full"
+                    className={`w-10 h-10 rounded-full ${
+                      theme === "dark" ? "bg-gray-700" : "bg-white"
+                    }`}
                   />
-                  <div className="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-blue-600 border border-white rounded-full dark:border-gray-800">
+                  <div
+                    className={`absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 border rounded-full ${
+                      theme === "dark"
+                        ? "bg-blue-600 border-gray-800"
+                        : "bg-blue-600 border-white"
+                    }`}
+                  >
                     <svg
                       className="w-2 h-2 text-white"
                       aria-hidden="true"
@@ -131,20 +207,36 @@ const NavBar = () => {
                   </div>
                 </div>
                 <div className="w-full ps-3">
-                  <div className="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
+                  <div
+                    className={`text-sm mb-1.5 ${
+                      theme === "dark" ? "dark:text-gray-400" : "text-gray-500"
+                    }`}
+                  >
                     New message from{" "}
-                    <span className="font-semibold text-gray-900 dark:text-white">
+                    <span
+                      className={`font-semibold ${
+                        theme === "dark" ? "dark:text-white" : "text-gray-900"
+                      }`}
+                    >
                       Jese Leos
                     </span>
                   </div>
-                  <div className="text-xs text-blue-600 dark:text-blue-500">
+                  <div
+                    className={`text-xs ${
+                      theme === "dark" ? "dark:text-blue-500" : "text-blue-600"
+                    }`}
+                  >
                     a few moments ago
                   </div>
                 </div>
               </a>
               <a
                 href="#"
-                className="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className={`flex px-4 py-3 ${
+                  theme === "dark"
+                    ? "dark:hover:bg-gray-700"
+                    : "hover:bg-gray-100"
+                }`}
               >
                 <div className="flex-shrink-0">
                   <Image
@@ -152,9 +244,17 @@ const NavBar = () => {
                     height={80}
                     width={200}
                     alt="profile img"
-                    className="bg-white w-10 h-10 rounded-full"
+                    className={`w-10 h-10 rounded-full ${
+                      theme === "dark" ? "bg-gray-700" : "bg-white"
+                    }`}
                   />
-                  <div className="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-gray-900 border border-white rounded-full dark:border-gray-800">
+                  <div
+                    className={`absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 border rounded-full ${
+                      theme === "dark"
+                        ? "bg-gray-900 border-gray-800"
+                        : "bg-gray-900 border-white"
+                    }`}
+                  >
                     <svg
                       className="w-2 h-2 text-white"
                       aria-hidden="true"
@@ -167,17 +267,33 @@ const NavBar = () => {
                   </div>
                 </div>
                 <div className="w-full ps-3">
-                  <div className="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                    <span className="font-semibold text-gray-900 dark:text-white">
+                  <div
+                    className={`text-sm mb-1.5 ${
+                      theme === "dark" ? "dark:text-gray-400" : "text-gray-500"
+                    }`}
+                  >
+                    <span
+                      className={`font-semibold ${
+                        theme === "dark" ? "dark:text-white" : "text-gray-900"
+                      }`}
+                    >
                       Joseph Mcfall
                     </span>{" "}
                     and{" "}
-                    <span className="font-medium text-gray-900 dark:text-white">
+                    <span
+                      className={`font-medium ${
+                        theme === "dark" ? "dark:text-white" : "text-gray-900"
+                      }`}
+                    >
                       5 others
                     </span>{" "}
                     started following you.
                   </div>
-                  <div className="text-xs text-blue-600 dark:text-blue-500">
+                  <div
+                    className={`text-xs ${
+                      theme === "dark" ? "dark:text-blue-500" : "text-blue-600"
+                    }`}
+                  >
                     10 minutes ago
                   </div>
                 </div>

@@ -12,7 +12,9 @@ const Layout = ({ children }) => {
         <NavBar />
         {/* <BreadCrumbs /> */}
         {/* main content */}
-        <main className="p-8 bg-slate-950 text-slate-50 min-h-screen mt-16 ml-60">{children}</main>
+        <main className="p-8 dark:bg-slate-950 bg-slate-50 dark:text-slate-50 text-black-50 min-h-screen mt-16 ml-60">
+          {children}
+        </main>
       </div>
     </div>
   );

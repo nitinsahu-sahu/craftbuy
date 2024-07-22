@@ -41,7 +41,7 @@ const WeelklySalesBar = () => {
   const [chartToDisplay, setChartToDisplay] = useState("sales");
 
   return (
-    <div className="bg-slate-800 p-8 rounded-lg">
+    <div className="dark:bg-slate-800 bg-slate-300 p-8 rounded-lg">
       <h2 className="text-xl font-bold">Weekly Sales</h2>
       {/* tabs button */}
       <div className="text-sm font-medium text-center text-orange-500 border-b border-orange-200 dark:text-orange-400 dark:border-orange-700">
@@ -81,7 +81,7 @@ const WeelklySalesBar = () => {
 
 const BestSalesProductBar = () => {
   return (
-    <div className="bg-slate-800 p-8 rounded-lg">
+    <div className="dark:bg-slate-800 bg-slate-300 p-8 rounded-lg">
       <h2 className="text-xl font-bold">Best Sales Product</h2>
       <Pie data={PieChartData} />
     </div>

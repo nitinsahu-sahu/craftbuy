@@ -12,11 +12,11 @@ const CustomDataTable = () => {
   const itemStartIndex = startIndex + 1;
   const itemEndIndex = Math.min(startIndex + PAGE_SIZE, data.length);
   return (
-    <div className="bg-slate-800 p-8 rounded-lg my-4">
+    <div className="dark:bg-slate-800 bg-slate-30 p-8 rounded-lg my-4">
       <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase dark:bg-slate-800 bg-slate-300 dark:text-gray-400">
             <tr>
               <th scope="col" className="p-4">
                 <div className="flex items-center">
@@ -107,11 +107,11 @@ const CustomDataTable = () => {
         >
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
             Showing{" "}
-            <span className="font-semibold text-white dark:text-white">
+            <span className="font-semibold text-black dark:text-white">
               {itemStartIndex}-{itemEndIndex}
             </span>{" "}
             of{" "}
-            <span className="font-semibold text-white dark:text-white">
+            <span className="font-semibold text-black dark:text-white">
               {data.length}
             </span>
           </span>

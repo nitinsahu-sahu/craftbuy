@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./styles/main.css";
 import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
-
+import ProvidersDarkMode from '../context/Providers'
 export const metadata: Metadata = {
   title: "Craftbuy",
   description:
@@ -26,7 +26,9 @@ export default function RootLayout({
 
       </head>
       <body className={inter.className}>
+        <ProvidersDarkMode>
         {children}
+        </ProvidersDarkMode>
       </body>
     </html>
   );
